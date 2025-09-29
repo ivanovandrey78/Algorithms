@@ -1,0 +1,8 @@
+# ninja log v7
+5	236	7802258389910465	CMakeFiles/my_app.dir/src/main.cpp.obj	553ff4c7f7568dd4
+24	341	7802258849080072	build.ninja	67c19bc622d6f1a9
+24	341	7802258849080072	C:/Users/1/Documents/cProjects/build/cmake_install.cmake	67c19bc622d6f1a9
+27	270	7802258849826018	CMakeFiles/my_app.dir/src/functions.cpp.obj	7ed0bf250adf6ad8
+271	364	7802258852162854	my_app.exe	9103f38b1346a178
+40	253	7802259402581236	CMakeFiles/my_app.dir/src/main.cpp.obj	553ff4c7f7568dd4
+254	368	7802259404727564	my_app.exe	9103f38b1346a178
