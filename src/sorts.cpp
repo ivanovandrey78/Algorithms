@@ -25,11 +25,13 @@ void insertSort(int* array, int n, int& comparisonСount) {
 }
 
 void bubbleSort(int* arr, int asize) {
-    for (int i = 0; i < asize-1; i++) {
+    for (int i = 0; i < asize-1; i++) 
+    {
         for (int j = 0; j < asize - i - 1 ; j++)
-        if (arr[j] > arr[j + 1]) {
-            std::swap(arr[j], arr[j + 1]);
-        }
+            if (arr[j] > arr[j + 1]) 
+            {
+                std::swap(arr[j], arr[j + 1]);
+            }
     }       
 }
 

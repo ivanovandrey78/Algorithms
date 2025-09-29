@@ -1,6 +1,6 @@
 #include "../include/functions.h"
 
-void print_massive(int* a, int n) {
+void printMassive(int* a, int n) {
     std::cout << '{';
     for (int i=0;i<n;i++) {
         if (i == n-1)
@@ -34,10 +34,9 @@ int max_array(int *a,int n) {
     return m;
 }
 
-int get_rev_arr(int* arr, int n) {
+void revArray(int* arr, int n) {
    for (int i=0;i<n/2;i++) 
        std::swap(arr[i],arr[n-i-1]);
-   return *arr;
 }
 
 int min(int a,int b) {
