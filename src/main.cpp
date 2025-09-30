@@ -2,6 +2,8 @@
 #include "../include/sorts.h"
 #include "../include/pyramid.hpp"
 
+#include <iostream>
+
 struct Track {
     int popularity;
     int stability; 
