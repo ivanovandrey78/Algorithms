@@ -2,96 +2,75 @@
 #include "../include/sorts.h"
 #include "../include/pyramid.hpp"
 
+#include <bits/stdc++.h>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
 
-struct Track {
-    int popularity;
-    int stability; 
-    int initialPosition;
-};
+uint32_t cur = 0;
 
-bool compareTracks(const Track& t1, const Track& t2) {
-    if (t1.popularity != t2.popularity)
-        return t1.popularity < t2.popularity;  // popularity
-
-    if (t1.stability != t2.stability)
-        return t1.stability < t2.stability;    // stable
-
-    return t1.initialPosition < t2.initialPosition; // init pos 
+uint32_t nextRand24(uint32_t a, uint32_t b) {
+    cur = cur * a + b;
+    return cur >> 8;
 }
 
-void mergeTracks(Track* res,Track*a,size_t sizeA,Track*b,size_t sizeB) {
-    
-    int i=0,j=0;
-    int indexNow = 0;
-    
-    while (i < sizeA && j < sizeB) {
-        if (compareTracks(a[i],b[j])) {
-            res[indexNow] = a[i];
-            i++;
-            indexNow++;
-        }
-        else {
-            res[indexNow] = b[j];
-            j++;
-            indexNow++;
-        }
-    }
-    while (i < sizeA) {
-        res[indexNow] = a[i];
-        indexNow++;
-        i++;
-    }
-    while (j < sizeB) {
-        res[indexNow] = b[j];
-        indexNow++;
-        j++;
-    }
+uint32_t nextRand32(uint32_t a, uint32_t b) {
+    uint32_t x = nextRand24(a, b);
+    uint32_t y = nextRand24(a, b);
+    return (x << 8) ^ y;
 }
 
-void mergeSortTracks(Track* a,size_t sizeA) {
-
-    if (sizeA <= 1) 
-    {
-        return;
+uint32_t quickSelect(uint32_t arr[], int n, int k) {
+    k--; // т.к. счёт треков начинается с 1
+    int left = 0, right = n - 1;
+    
+    while (left < right) {
+        // рандомный опорный элемент
+        int pivotIndex = left + rand() % (right - left + 1);
+        uint32_t pivot = arr[pivotIndex];
+        
+        int i = left - 1;
+        int j = right + 1;
+        
+        while (true) {
+            do { i++; } while (arr[i] < pivot);
+            do { j--; } while (arr[j] > pivot);
+            
+            if (i >= j) break;
+            
+            uint32_t temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        
+        int pos = j;
+        
+        if (k <= pos) {
+            right = pos;
+        } else {
+            left = pos + 1;
+        }
     }
-
-    size_t mid = sizeA/2;
-    Track* left = new Track[mid];
-    Track* right = new Track[sizeA-mid];
-
-    for (size_t i=0;i<mid;i++) 
-    {
-        left[i] = a[i];
-    }
-    for (size_t i = mid;i<sizeA;i++) 
-    {
-        right[i-mid] = a[i];
-    }
-
-    mergeSortTracks(left,mid);
-    mergeSortTracks(right,sizeA-mid);
-
-    mergeTracks(a,left,mid,right,sizeA-mid);
-
-    delete[] left;
-    delete[] right;
+    
+    return arr[left];
 }
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    srand(time(0));
 
-    int n; std::cin >> n; //init 
-    Track chart[n];
+    uint32_t n, k, a, b;
+    cin >> n >> k >> a >> b;
 
-    for (int i = 0; i < n; i++) //input
-    {
-        std::cin >> chart[i].popularity;
-        std::cin >> chart[i].stability;
-        chart[i].initialPosition = i+1;
+    uint32_t arr[n];
+
+    for (uint32_t i = 0; i < n; i++) {
+        arr[i] = nextRand32(a, b);
     }
-    
-    mergeSortTracks(chart,n);
-    for(int i = 0;i<n;i++) std::cout << chart[i].initialPosition << ' ';
+
+    cout << quickSelect(arr, n, k) << "\n";
 
     return 0;
 }

@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named my_app
+# Target rules for targets named app
 
 # Build rule for target.
-my_app: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 my_app
-.PHONY : my_app
+app: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 app
+.PHONY : app
 
 # fast build rule for target.
-my_app/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/build
-.PHONY : my_app/fast
+app/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/build
+.PHONY : app/fast
 
 src/functions.obj: src/functions.cpp.obj
 .PHONY : src/functions.obj
 
 # target to build an object file
 src/functions.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/functions.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/functions.cpp.obj
 .PHONY : src/functions.cpp.obj
 
 src/functions.i: src/functions.cpp.i
@@ -141,7 +141,7 @@ src/functions.i: src/functions.cpp.i
 
 # target to preprocess a source file
 src/functions.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/functions.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/functions.cpp.i
 .PHONY : src/functions.cpp.i
 
 src/functions.s: src/functions.cpp.s
@@ -149,7 +149,7 @@ src/functions.s: src/functions.cpp.s
 
 # target to generate assembly for a file
 src/functions.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/functions.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/functions.cpp.s
 .PHONY : src/functions.cpp.s
 
 src/main.obj: src/main.cpp.obj
@@ -157,7 +157,7 @@ src/main.obj: src/main.cpp.obj
 
 # target to build an object file
 src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/main.cpp.obj
 .PHONY : src/main.cpp.obj
 
 src/main.i: src/main.cpp.i
@@ -165,7 +165,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -173,7 +173,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/pyramid.obj: src/pyramid.cpp.obj
@@ -181,7 +181,7 @@ src/pyramid.obj: src/pyramid.cpp.obj
 
 # target to build an object file
 src/pyramid.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/pyramid.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/pyramid.cpp.obj
 .PHONY : src/pyramid.cpp.obj
 
 src/pyramid.i: src/pyramid.cpp.i
@@ -189,7 +189,7 @@ src/pyramid.i: src/pyramid.cpp.i
 
 # target to preprocess a source file
 src/pyramid.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/pyramid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/pyramid.cpp.i
 .PHONY : src/pyramid.cpp.i
 
 src/pyramid.s: src/pyramid.cpp.s
@@ -197,7 +197,7 @@ src/pyramid.s: src/pyramid.cpp.s
 
 # target to generate assembly for a file
 src/pyramid.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/pyramid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/pyramid.cpp.s
 .PHONY : src/pyramid.cpp.s
 
 src/sorts.obj: src/sorts.cpp.obj
@@ -205,7 +205,7 @@ src/sorts.obj: src/sorts.cpp.obj
 
 # target to build an object file
 src/sorts.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/sorts.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/sorts.cpp.obj
 .PHONY : src/sorts.cpp.obj
 
 src/sorts.i: src/sorts.cpp.i
@@ -213,7 +213,7 @@ src/sorts.i: src/sorts.cpp.i
 
 # target to preprocess a source file
 src/sorts.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/sorts.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/sorts.cpp.i
 .PHONY : src/sorts.cpp.i
 
 src/sorts.s: src/sorts.cpp.s
@@ -221,7 +221,7 @@ src/sorts.s: src/sorts.cpp.s
 
 # target to generate assembly for a file
 src/sorts.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\my_app.dir\build.make CMakeFiles/my_app.dir/src/sorts.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/sorts.cpp.s
 .PHONY : src/sorts.cpp.s
 
 # Help Target
@@ -232,7 +232,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... my_app
+	@echo ... app
 	@echo ... src/functions.obj
 	@echo ... src/functions.i
 	@echo ... src/functions.s

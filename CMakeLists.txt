@@ -22,10 +22,10 @@ set(HEADERS
 )
 
 # Создание исполняемого файла
-add_executable(my_app ${SOURCES} ${HEADERS})
+add_executable(app ${SOURCES} ${HEADERS})
 
 # Включение директории с заголовками
-target_include_directories(my_app PRIVATE include)
+target_include_directories(app PRIVATE include)
 
 # Установка выходной директории (опционально)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
