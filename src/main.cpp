@@ -18,13 +18,13 @@ bool compareTracks(const Track& t1, const Track& t2) {
     return t1.initialPosition < t2.initialPosition; // init pos 
 }
 
-void mergeTracks(int* res,int*a,size_t sizeA,int*b,size_t sizeB) {
+void mergeTracks(Track* res,Track*a,size_t sizeA,Track*b,size_t sizeB) {
     
     int i=0,j=0;
     int indexNow = 0;
     
     while (i < sizeA && j < sizeB) {
-        if (compareTracks()) {
+        if (compareTracks(a[i],b[j])) {
             res[indexNow] = a[i];
             i++;
             indexNow++;
@@ -47,7 +47,7 @@ void mergeTracks(int* res,int*a,size_t sizeA,int*b,size_t sizeB) {
     }
 }
 
-void mergeSortTracks(int* a,size_t sizeA) {
+void mergeSortTracks(Track* a,size_t sizeA) {
 
     if (sizeA <= 1) 
     {
@@ -55,8 +55,8 @@ void mergeSortTracks(int* a,size_t sizeA) {
     }
 
     size_t mid = sizeA/2;
-    int* left = new int[mid];
-    int* right = new int[sizeA-mid];
+    Track* left = new Track[mid];
+    Track* right = new Track[sizeA-mid];
 
     for (size_t i=0;i<mid;i++) 
     {
@@ -67,10 +67,10 @@ void mergeSortTracks(int* a,size_t sizeA) {
         right[i-mid] = a[i];
     }
 
-    mergeSort(left,mid);
-    mergeSort(right,sizeA-mid);
+    mergeSortTracks(left,mid);
+    mergeSortTracks(right,sizeA-mid);
 
-    merge(a,left,mid,right,sizeA-mid);
+    mergeTracks(a,left,mid,right,sizeA-mid);
 
     delete[] left;
     delete[] right;
@@ -87,8 +87,9 @@ int main() {
         std::cin >> chart[i].stability;
         chart[i].initialPosition = i+1;
     }
-
-
+    
+    mergeSortTracks(chart,n);
+    for(int i = 0;i<n;i++) std::cout << chart[i].initialPosition << ' ';
 
     return 0;
 }
