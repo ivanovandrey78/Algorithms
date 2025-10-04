@@ -7,21 +7,21 @@
 #include <ctime> 
 #include <cmath>
 
-void printMassive(int* a, int n);
-double get_sr(int *a,int n);
-int min_array(int* a,int n);
+void PrintMassive(int* a, int n);
+double GetMiddleArray(int *a,int n);
+int MinArray(int* a,int n);
 int max_array(int* a,int n);
-void revArray(int* arr, int n);
-int* get_uniq(int* arr,int n,int& res_size);
-int min(int a,int b); int max(int a,int b);
-int* get_merge_array(int* a,int n_a,int* b,int n_b,int& bg_size);
-int strLength(std::string s);
-short int index(char symbol,std::string s);
-void print(std::string);
-double pow(double n,int rec);
-double sqrtNewton(double n);
+void ReverseArray(int* arr, int n);
+int* GetUniqArray(int* arr,int n,int& res_size);
+int Min(int a,int b); int Max(int a,int b);
+int* Merge(int* a,int n_a,int* b,int n_b,int& bg_size);
+int StringLength(std::string s);
+short int SymbolIndex(char symbol,std::string s);
+void Print(std::string);
+double Pow(double n,int rec);
+double SqrtNewton(double n);
 bool isPrime(int n);
-int* randomMassive(int& n,int border);
-int* inputArray(int& n);
+int* RandomMassive(int& n,int border);
+int* InputArray(int& n);
 
 #endif

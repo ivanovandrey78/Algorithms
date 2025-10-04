@@ -1,20 +1,24 @@
 #ifndef PYRAMID_H
 #define PYRAMID_H
+#define HEAP_CAPACITY 50
 
 #include <iostream>
 
-enum type {
+enum Type {
     MAX_HEAP,
     MIN_HEAP,
 };
 
 struct Heap {
-    int size;
-    int* elements;
-    int top = *elements;
+    int size; // size now 
+    int capacity; // capacity in all 
+    int elements[HEAP_CAPACITY];
+    Type heapType;
 };
 
 void heapCreate(int* a,int n);
-void siftDown(int* a,int n,size_t i);
+void SiftDown(int* a,int n,int i);
+bool IsHeap(int* arr, int n);
+void CreateHeap(int* arr, int n);
 
 #endif
