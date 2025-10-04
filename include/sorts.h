@@ -14,6 +14,6 @@ int partLomuto(int* a, int start, int end);
 int partHoare(int* arr, int low, int high);
 int partition(int* arr, int low, int high);
 void quickSort(int* a, int start, int end,int partType);
-
+void HeapSort(int* arr,int n);
 
 #endif

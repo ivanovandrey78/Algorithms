@@ -107,15 +107,13 @@ void mergeSort(int* a,size_t sizeA) {
     delete[] right;
 }
 
-void pyramidSort(int* a,int arrState) {
-    switch (arrState)
-    {
-        case 0:
-            // arr != heap 
-            break;
-        case 1: 
-            // arr = heap 
-            break;
+void HeapSort(int* arr,int n) {
+    
+    CreateHeap(arr,n);
+
+    for(int i = 0; i > 0;i++) {
+        std::swap(arr[0],arr[i]);
+        SiftDown(arr,i,0);
     }
 }
 
