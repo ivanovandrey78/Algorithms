@@ -50,7 +50,6 @@ void SelectionSort(int* a, int n) { // O(n^2)
 }
 
 void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // Simple merge with C-style
-    
     int i=0,j=0;
     int indexNow = 0;
     
@@ -118,17 +117,14 @@ void HeapSort(int* arr,int n) {
 }
 
 int PartitionLomuto(int* a, int start, int end) { // O(n^2)
-
     int pivot = a[end];
     int i = start - 1;
-
     for (int j = start; j < end; j++) {
         if (a[j] <= pivot) {
             i++;
             std::swap(a[i], a[j]);
         }
     }
-
     std::swap(a[i + 1], a[end]);
     return i + 1;
 }
@@ -173,33 +169,29 @@ int partition(int* arr, int low, int high) { // O(nlogn)
     return i + 1;
 }
 
-void quickSort(int* a, int start, int end,int partType) { // O(nlogn) or O(n^2)
-
+void quickSort(int* a, int start, int end,PartitionType partType) { // O(nlogn) or O(n^2)
     if (start < end) {
         int pivot;
-
         switch (partType) // pivot == 0 - random, 1 - Hoare, 2 - Lomuto 
         {
-            case 0: {
+            case PartitionType::kPartitionRandom: {
                 pivot = partition(a, start, end);
                 break;
             }
-            case 1: {
+            case PartitionType::kPartitionHoare: {
                 pivot = PartitionHoare(a,start,end);
                 break;
             }
-            default: {
+            default: { // Partition Lomuto
                 pivot = PartitionLomuto(a,start,end);
                 break;
             }
         }
-        
-        if (pivot > 0 && partType != 1) {
+        if (pivot > 0 && partType != PartitionType::kPartitionHoare) {
             quickSort(a, start, pivot-1,partType);
         } else {
             quickSort(a, start, pivot,partType);
         }
-
         quickSort(a, pivot + 1, end,partType);
     }
 }

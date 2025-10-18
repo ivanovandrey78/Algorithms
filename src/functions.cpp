@@ -56,7 +56,7 @@ int StrLen(const char* string) {
     return c;
 }
 
-short int SymbolIndex(char symbol,const char* s) {
+int SymbolIndex(char symbol,const char* s) {
     for (int i=0;i<StrLen(s);i++) {
         if (symbol == s[i]) 
             return i;
@@ -64,14 +64,13 @@ short int SymbolIndex(char symbol,const char* s) {
     return -1;
 }
 
-void Print(std::string s) {
-    std::cout << s << ' ';
+void Print(const char* s) {
+    std::cout << s << '\n';
 }
 
-double Pow(double n,int rec) {
+double pow(double n,int rec) {
     double prod = 1;
-    for (int i=0;i<rec;i++)
-        prod *= n;
+    for (int i = 0;i < rec;i++) {prod *= n;}
     return prod;
 }
 
@@ -84,9 +83,9 @@ double SqrtNewton(double n) {
 
     double x_before = 0;
     int c = 0;
-    while (c != 100 && abs(x-x_before) != Pow(0.1,6)) {
+    while (c != 100 && abs(x-x_before) != pow(0.1,6)) {
         x_before = x;
-        x = x - ((Pow(x,2)-n) / (2*x));
+        x = x - ((pow(x,2)-n) / (2*x));
         c++;
     }
 
@@ -141,4 +140,9 @@ uint64_t Factorial(uint32_t n) {
     }
 
     return result;
+}
+
+bool IsSorted(int* arr,int n) {
+    for (int i = 0;i < n-1;i++) if (arr[i] > arr[i+1]) return false;
+    return true;
 }

@@ -19,11 +19,9 @@ void SiftDown(int* arr, int n, int i) {
 }
 
 void CreateHeap(int* arr, int n) {
-
     for(int i = n/2;i >= 0;i--) {
         SiftDown(arr,n,i);
     }
-
 }
 
 bool IsHeap(int* arr, int n) {
