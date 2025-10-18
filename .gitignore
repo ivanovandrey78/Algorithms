@@ -5,12 +5,13 @@
 *.dylib
 *.app
 
-# Папки сборки
+# Папки сборки (и main.cpp)
 build/
 bin/
 dist/
 out/
 target/
+src/main.cpp
 
 # Системные файлы
 .DS_Store

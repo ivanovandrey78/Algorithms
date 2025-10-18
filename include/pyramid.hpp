@@ -4,16 +4,9 @@
 
 #include <iostream>
 
-enum Type {
-    MAX_HEAP,
-    MIN_HEAP,
-};
-
-struct Heap {
-    int size; // size now 
-    int capacity; // capacity in all 
-    int elements[HEAP_CAPACITY];
-    Type heapType;
+enum class HeapType {
+    kMinHeap,
+    kMaxHeap,
 };
 
 void HeapCreate(int* a,int n);

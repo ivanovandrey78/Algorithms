@@ -7,11 +7,9 @@ void insertSort(int* array, int n, int& comparisonСount) { // O(n^2)
         comparisonСount = 0;
         return;
     }
-
     for (int i = 1; i < n; i++) {
         int key = array[i];
         int j = i - 1;
-
         while (j >= 0) {
             comparisonСount++; 
             if (array[j] > key) {
@@ -19,7 +17,6 @@ void insertSort(int* array, int n, int& comparisonСount) { // O(n^2)
                 j--;
             } else break;
         }
-
         array[j + 1] = key;
     }
 }
@@ -35,7 +32,7 @@ void bubbleSort(int* arr, int asize) { // O(n^2)
     }       
 }
 
-void SelectionSort(int* a, int n) { // O(n^2)
+void selectionSort(int* a, int n) { // O(n^2)
     for (int i = 0; i < n-1; i++) {
         int indexNow = i; 
         for (int j = i+1; j < n; j++) {
@@ -49,7 +46,7 @@ void SelectionSort(int* a, int n) { // O(n^2)
     }
 }
 
-void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // Simple merge with C-style
+void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // simple merge with c-style
     int i=0,j=0;
     int indexNow = 0;
     
@@ -77,7 +74,7 @@ void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // Simple merge wit
     }
 }
 
-void MergeSort(int* a,size_t sizeA) { // O(nlogn)
+void mergeSort(int* a,size_t sizeA) { // O(nlogn)
 
     if (sizeA <= 1) 
     {
@@ -97,8 +94,8 @@ void MergeSort(int* a,size_t sizeA) { // O(nlogn)
         right[i-mid] = a[i];
     }
 
-    MergeSort(left,mid);
-    MergeSort(right,sizeA-mid);
+    mergeSort(left,mid);
+    mergeSort(right,sizeA-mid);
 
     merge(a,left,mid,right,sizeA-mid);
 
@@ -106,7 +103,7 @@ void MergeSort(int* a,size_t sizeA) { // O(nlogn)
     delete[] right;
 }
 
-void heapSort(int* arr, int n) {
+void heapSort(int* arr, int n) { // O(nlogn)
     for (int i = n / 2 - 1; i >= 0; i--)
         SiftDown(arr, n, i);
     for (int i = n - 1; i >= 0; i--) {
@@ -130,7 +127,6 @@ int PartitionLomuto(int* a, int start, int end) { // O(n^2)
 
 int PartitionHoare(int* arr, int low, int high) { // O(n^2)
     int pivot = arr[low];
-    
     int i = low - 1;
     int j = high + 1;
     
@@ -151,7 +147,6 @@ int PartitionHoare(int* arr, int low, int high) { // O(n^2)
 }
 
 int partition(int* arr, int low, int high) { // O(nlogn)
-
     int randomIndex = low + rand() % (high - low + 1);
     std::swap(arr[randomIndex], arr[high]);
     
@@ -171,7 +166,7 @@ int partition(int* arr, int low, int high) { // O(nlogn)
 void quickSort(int* a, int start, int end,PartitionType partType) { // O(nlogn) or O(n^2)
     if (start < end) {
         int pivot;
-        switch (partType) // pivot == 0 - random, 1 - Hoare, 2 - Lomuto 
+        switch (partType) 
         {
             case PartitionType::kPartitionRandom: {
                 pivot = partition(a, start, end);
