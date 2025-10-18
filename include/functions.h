@@ -14,6 +14,7 @@ namespace mymath {
     int min(int a,int b); 
     int max(int a,int b);
     double sqrt(double n,int maxIterations = 3);
+    double ln(double x);
 }
 
 // array Functions

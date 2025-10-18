@@ -2,6 +2,10 @@
 
 namespace mymath {
 
+    constexpr double PI = 3.141592653589793238462643383279502884197169399375105820974944;
+    constexpr double E = 2.718281828459045235360287471352662497757247093699959574966967;
+    constexpr double LN2 = 0.693147180559945309417232121458176568075500134360255254120680;
+
     double sqrt(double n,int maxIterations) {
     if (n < 0) { std::cerr << "Number must be positive" << '\n'; return 1; }
     if (n == 1) return 1.0;
@@ -36,7 +40,7 @@ namespace mymath {
         else return b;
     }
 
-    double pow(double n,int rec) {
+    double pow (double n,int rec) {
     double prod = 1;
     for (int i = 0;i < rec;i++) {prod *= n;}
     return prod;
@@ -50,6 +54,39 @@ namespace mymath {
         result = n * Factorial(n-1);
     }
     return result;
+    }
+
+    double ln(double x) {
+        if (x <= 0) { 
+            throw "ln(x) undefined for x <= 0"; 
+        }
+        
+        int m = 0;
+        double s = x;
+        
+        while (s >= 2.0) {
+            s /= 2.0;
+            m++;
+        }
+        while (s < 1.0) {
+            s *= 2.0;
+            m--;
+        }
+    
+        double t = (s - 1.0) / (s + 1.0);
+        double t_sq = t * t;
+        double term = t;
+        double sum = term;
+        
+        for (int k = 1; k <= 20; ++k) {
+            term *= t_sq;
+            double new_term = term / (2*k + 1);
+            sum += new_term;
+            
+            if (new_term < 1e-16) break;
+        }
+        
+        return 2.0 * sum + m * LN2;
     }
 }
 
