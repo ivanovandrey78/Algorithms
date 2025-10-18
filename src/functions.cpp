@@ -1,5 +1,58 @@
 #include "../include/functions.h"
 
+namespace mymath {
+
+    double sqrt(double n,int maxIterations) {
+    if (n < 0) { std::cerr << "Number must be positive" << '\n'; return 1; }
+    if (n == 1) return 1.0;
+    if (n == 0) return 0.0;
+    
+    if (maxIterations <= 0) {
+        int d = 1;
+        while (d*d <= n) {
+            if (d * d == n) return static_cast<double>(d);
+            d++;
+        }
+        d--;
+        double derivative = 1.0/(2.0*d);
+        return d + (n - d*d)*derivative;
+    }
+
+    double currentApprox = sqrt(n, maxIterations-1);
+    
+    double derivative = 1.0/(2.0*currentApprox);
+    double result = currentApprox + (n - currentApprox*currentApprox)*derivative;
+    
+    return result;
+    }
+
+    int min(int a,int b) {
+    if(a<=b) return a;
+    return b;
+    }
+
+    int max(int a,int b) { 
+        if(a>=b) return a;
+        else return b;
+    }
+
+    double pow(double n,int rec) {
+    double prod = 1;
+    for (int i = 0;i < rec;i++) {prod *= n;}
+    return prod;
+    }
+
+    unsigned long Factorial(unsigned int n) {
+    unsigned long result;
+    if (n==0) {
+        result = 1;
+    } else {
+        result = n * Factorial(n-1);
+    }
+    return result;
+    }
+}
+
 void PrintMassive(int* a, int n) {
     std::cout << '{';
     for (int i=0;i<n;i++) {
@@ -26,7 +79,7 @@ int MinArray(int* a,int n) {
     return m;
 }
 
-int max_array(int *a,int n) { 
+int MaxArray(int *a,int n) { 
     int m = GetMiddleArray(a,n);
     for(int i=0;i<n;i++) {
         if (m<a[i]) m = a[i];
@@ -37,16 +90,6 @@ int max_array(int *a,int n) {
 void ReverseArray(int* arr, int n) {
    for (int i=0;i<n/2;i++) 
        std::swap(arr[i],arr[n-i-1]);
-}
-
-int Min(int a,int b) {
-    if(a<=b) return a;
-    return b;
-}
-
-int Max(int a,int b) { 
-    if(a>=b) return a;
-    else return b;
 }
 
 int StrLen(const char* string) {
@@ -64,37 +107,11 @@ int SymbolIndex(char symbol,const char* s) {
     return -1;
 }
 
-void Print(const char* s) {
-    std::cout << s << '\n';
-}
-
-double pow(double n,int rec) {
-    double prod = 1;
-    for (int i = 0;i < rec;i++) {prod *= n;}
-    return prod;
-}
-
-double SqrtNewton(double n) { 
-    if (n < 0.0) { std::cerr << "Error: Number must be positive. Error code: "; return -1;}
-    else if (n == 0) return 0;
-
-
-    double x = (n+1)/2;
-
-    double x_before = 0;
-    int c = 0;
-    while (c != 100 && abs(x-x_before) != pow(0.1,6)) {
-        x_before = x;
-        x = x - ((pow(x,2)-n) / (2*x));
-        c++;
-    }
-
-    return x;
-}
+void Print(const char* s) { std::cout << s << '\n'; }
 
 bool isPrime(int n) { 
     bool flag = true;
-    for (int d = 2; d < SqrtNewton(n); d++) {
+    for (int d = 2; d < mymath::sqrt(n); d++) {
         if (n%d == 0) flag = false;
     }
     return flag;
@@ -111,38 +128,14 @@ int* RandomMassive(int& n,int border) {
 }
 
 int* InputArray(int& n) {
-    
     std::cin >> n;
     int* arr = new int[n];
-
-    for(int i = 0; i<n; i++) 
-    {
-        std::cin >> arr[i];
-    }
-
+    for(int i = 0; i<n; i++) { std::cin >> arr[i]; }
     return arr;
-
 }
 
 int SumArray(int *a, int n) {
     int c = 0;
-    for(int i = 0;i<n;i++) c+=a[i];
+    for(int i = 0;i < n;i++) c += a[i];
     return c;
-}
-
-uint64_t Factorial(uint32_t n) {
-    uint64_t result;
-
-    if (n==0) {
-        result = 1;
-    } else {
-        result = n * Factorial(n-1);
-    }
-
-    return result;
-}
-
-bool IsSorted(int* arr,int n) {
-    for (int i = 0;i < n-1;i++) if (arr[i] > arr[i+1]) return false;
-    return true;
 }

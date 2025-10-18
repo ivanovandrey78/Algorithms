@@ -9,20 +9,23 @@ enum class PartitionType {
     kPartitionLomuto,
 };
 
-// other
+// main functions
 void insertSort(int* array, int n,int& c);
 void bubbleSort(int* arr, int asize);
 void SelectionSort(int* a,int n);
 int* merge(int* a,int nA, int* b,int nB,int& n);
 void MergeSort(int* a,size_t sizeA);
 
-// quick 
+// quick sort
 int PartitionLomuto(int* a, int start, int end);
 int PartitionHoare(int* arr, int low, int high);
 int partition(int* arr, int low, int high);
 void quickSort(int* a, int start, int end,PartitionType partType);
 
 // heap 
-void HeapSort(int* arr,int n);
+void heapSort(int* arr, int n);
+
+// helpers for sorts 
+bool isSorted(int* arr,int n);
 
 #endif

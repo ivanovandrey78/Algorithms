@@ -106,13 +106,12 @@ void MergeSort(int* a,size_t sizeA) { // O(nlogn)
     delete[] right;
 }
 
-void HeapSort(int* arr,int n) {
-    
-    CreateHeap(arr,n);
-
-    for(int i = 0; i > 0;i++) {
-        std::swap(arr[0],arr[i]);
-        SiftDown(arr,i,0);
+void heapSort(int* arr, int n) {
+    for (int i = n / 2 - 1; i >= 0; i--)
+        SiftDown(arr, n, i);
+    for (int i = n - 1; i >= 0; i--) {
+        std::swap(arr[0], arr[i]);
+        SiftDown(arr, i, 0);
     }
 }
 
@@ -194,4 +193,9 @@ void quickSort(int* a, int start, int end,PartitionType partType) { // O(nlogn) 
         }
         quickSort(a, pivot + 1, end,partType);
     }
+}
+
+bool isSorted(int* arr,int n) {
+    for (int i = 0;i < n-1;i++) if (arr[i] > arr[i+1]) return false;
+    return true;
 }
