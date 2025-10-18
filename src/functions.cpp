@@ -49,16 +49,15 @@ int Max(int a,int b) {
     else return b;
 }
 
-int StringLength(std::string s) { 
-    short int c = 0;
-    for (auto x: s) { 
-        c++; 
-    }
+int StrLen(const char* string) {
+    int c = 0;
+    while (*string++) c++;
+    c--;
     return c;
 }
 
-short int SymbolIndex(char symbol,std::string s) {
-    for (int i=0;i<StringLength(s);i++) {
+short int SymbolIndex(char symbol,const char* s) {
+    for (int i=0;i<StrLen(s);i++) {
         if (symbol == s[i]) 
             return i;
     }
@@ -130,4 +129,16 @@ int SumArray(int *a, int n) {
     int c = 0;
     for(int i = 0;i<n;i++) c+=a[i];
     return c;
+}
+
+uint64_t Factorial(uint32_t n) {
+    uint64_t result;
+
+    if (n==0) {
+        result = 1;
+    } else {
+        result = n * Factorial(n-1);
+    }
+
+    return result;
 }

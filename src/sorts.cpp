@@ -2,7 +2,7 @@
 #include "../include/functions.h"
 #include "../include/pyramid.hpp"
 
-void insertSort(int* array, int n, int& comparisonСount) {
+void insertSort(int* array, int n, int& comparisonСount) { // O(n^2)
     if (n == 0) { 
         comparisonСount = 0;
         return;
@@ -24,7 +24,7 @@ void insertSort(int* array, int n, int& comparisonСount) {
     }
 }
 
-void bubbleSort(int* arr, int asize) {
+void bubbleSort(int* arr, int asize) { // O(n^2)
     for (int i = 0; i < asize-1; i++) 
     {
         for (int j = 0; j < asize - i - 1 ; j++)
@@ -35,7 +35,7 @@ void bubbleSort(int* arr, int asize) {
     }       
 }
 
-void selectionSort(int* a, int n) {
+void SelectionSort(int* a, int n) { // O(n^2)
     for (int i = 0; i < n-1; i++) {
         int indexNow = i; 
         for (int j = i+1; j < n; j++) {
@@ -49,7 +49,7 @@ void selectionSort(int* a, int n) {
     }
 }
 
-void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) {
+void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // Simple merge with C-style
     
     int i=0,j=0;
     int indexNow = 0;
@@ -78,7 +78,7 @@ void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) {
     }
 }
 
-void mergeSort(int* a,size_t sizeA) {
+void MergeSort(int* a,size_t sizeA) { // O(nlogn)
 
     if (sizeA <= 1) 
     {
@@ -98,8 +98,8 @@ void mergeSort(int* a,size_t sizeA) {
         right[i-mid] = a[i];
     }
 
-    mergeSort(left,mid);
-    mergeSort(right,sizeA-mid);
+    MergeSort(left,mid);
+    MergeSort(right,sizeA-mid);
 
     merge(a,left,mid,right,sizeA-mid);
 
@@ -117,7 +117,7 @@ void HeapSort(int* arr,int n) {
     }
 }
 
-int partLomuto(int* a, int start, int end) { // n^2
+int PartitionLomuto(int* a, int start, int end) { // O(n^2)
 
     int pivot = a[end];
     int i = start - 1;
@@ -133,7 +133,7 @@ int partLomuto(int* a, int start, int end) { // n^2
     return i + 1;
 }
 
-int partHoare(int* arr, int low, int high) { // n^2
+int PartitionHoare(int* arr, int low, int high) { // O(n^2)
     int pivot = arr[low];
     
     int i = low - 1;
@@ -155,7 +155,7 @@ int partHoare(int* arr, int low, int high) { // n^2
     }
 }
 
-int partition(int* arr, int low, int high) { // почти всегда nlogn
+int partition(int* arr, int low, int high) { // O(nlogn)
 
     int randomIndex = low + rand() % (high - low + 1);
     std::swap(arr[randomIndex], arr[high]);
@@ -173,25 +173,23 @@ int partition(int* arr, int low, int high) { // почти всегда nlogn
     return i + 1;
 }
 
-void quickSort(int* a, int start, int end,int partType) { // 0 - random, 1 - Hoare, 2 - Lomuto
+void quickSort(int* a, int start, int end,int partType) { // O(nlogn) or O(n^2)
 
     if (start < end) {
         int pivot;
 
-        switch (partType) 
+        switch (partType) // pivot == 0 - random, 1 - Hoare, 2 - Lomuto 
         {
             case 0: {
                 pivot = partition(a, start, end);
                 break;
             }
-
             case 1: {
-                pivot = partHoare(a,start,end);
+                pivot = PartitionHoare(a,start,end);
                 break;
             }
-
             default: {
-                pivot = partLomuto(a,start,end);
+                pivot = PartitionLomuto(a,start,end);
                 break;
             }
         }

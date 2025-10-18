@@ -162,4 +162,7 @@ CMakeFiles/app.dir/src/pyramid.cpp.obj: \
  C:/mingw64/include/c++/15.2.0/tr1/modified_bessel_func.tcc \
  C:/mingw64/include/c++/15.2.0/tr1/poly_hermite.tcc \
  C:/mingw64/include/c++/15.2.0/tr1/poly_laguerre.tcc \
- C:/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc
+ C:/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc \
+ C:/mingw64/include/c++/15.2.0/cstdint \
+ C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
+ C:/mingw64/x86_64-w64-mingw32/include/stdint.h

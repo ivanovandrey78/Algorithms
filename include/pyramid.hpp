@@ -16,7 +16,7 @@ struct Heap {
     Type heapType;
 };
 
-void heapCreate(int* a,int n);
+void HeapCreate(int* a,int n);
 void SiftDown(int* a,int n,int i);
 bool IsHeap(int* arr, int n);
 void CreateHeap(int* arr, int n);
