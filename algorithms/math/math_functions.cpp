@@ -46,12 +46,12 @@ namespace mymath {
     return prod;
     }
 
-    unsigned long Factorial(unsigned int n) {
+    unsigned long factorial(unsigned int n) {
     unsigned long result;
     if (n==0) {
         result = 1;
     } else {
-        result = n * Factorial(n-1);
+        result = n * factorial(n-1);
     }
     return result;
     }

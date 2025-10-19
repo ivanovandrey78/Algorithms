@@ -5,7 +5,7 @@
 
 namespace mymath {
     double pow(double n,int rec);
-    unsigned long Factorial(unsigned int n);
+    unsigned long factorial(unsigned int n);
     int min(int a,int b); 
     int max(int a,int b);
     double sqrt(double n,int maxIterations = 3);
