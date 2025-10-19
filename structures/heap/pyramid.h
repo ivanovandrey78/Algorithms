@@ -1,16 +1,22 @@
 #pragma once
 #include <iostream>
 
-#define PYRAMID_H
-#define HEAP_CAPACITY 50
-
 enum class HeapType {
     kMinHeap,
     kMaxHeap,
 };
 
-void HeapCreate(int* a,int n);
-void SiftDown(int* a,int n,int i);
-bool IsHeap(int* arr, int n);
-void CreateHeap(int* arr, int n);
-void heapSort(int* arr, int n);
+// Main func
+void SiftDown(int* arr, int size, int i, HeapType type);
+void SiftUp(int* arr, int size, int i, HeapType type);
+void BuildHeap(int* arr, int size, HeapType type);
+bool IsHeap(int* arr, int size, HeapType type);
+HeapType DetectHeapType(int* arr, int size);
+void heapSort(int* arr, int size, HeapType type);
+
+// Overloaded versions (kMinHeap by default)
+void SiftDown(int* arr, int size, int i);
+void SiftUp(int* arr, int size, int i);
+void BuildHeap(int* arr, int size);
+bool IsHeap(int* arr, int size);
+void heapSort(int* arr, int size);
