@@ -51,9 +51,9 @@
     ```
 3.  **Подключи нужные заголовки:**
     ```cpp
-    #include "algorithms/math/math_functions.h"
-    #include "algorithms/sorting/sorts.h" 
-    #include "structures/heap/binary_heap.h"
+    #include "math/math_functions.h"
+    #include "sorting/sorts.h" 
+    #include "heap/binary_heap.h"
     ```
 4.  **Используй в своем коде:**
     ```cpp
