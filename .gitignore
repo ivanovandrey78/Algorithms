@@ -11,7 +11,6 @@ bin/
 dist/
 out/
 target/
-src/main.cpp
 
 # Системные файлы
 .DS_Store
