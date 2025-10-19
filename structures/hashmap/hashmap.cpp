@@ -1,4 +1,4 @@
-#include "../structures/hashmap/hashmap.h"
+#include "hashmap.h"
 
 // Creates index for hash table cell using djb2 algorithm.
 unsigned long HashFunction(const char* string) {

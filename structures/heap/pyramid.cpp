@@ -1,4 +1,4 @@
-#include "../structures/heap/pyramid.h"
+#include "pyramid.h"
 
 void SiftDown(int* arr, int n, int i) { // logn 
     int largest = i;

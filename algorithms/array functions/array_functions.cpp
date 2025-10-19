@@ -1,4 +1,4 @@
-#include "../algorithms/array functions/array_functions.h"
+#include "array_functions.h"
 
 int* RandomMassive(int& n,int border) {
     std::cin >> n;

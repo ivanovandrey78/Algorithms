@@ -1,4 +1,4 @@
-#include "../algorithms/string/string_functions.h"
+#include "string_functions.h"
 
 int StrLen(const char* string) {
     int c = 0;

@@ -1,4 +1,4 @@
-#include "../algorithms/sorting/sorts.h"
+#include "sorts.h"
 #include "../structures/heap/pyramid.h"
 
 void insertSort(int* array, int n, int& comparisonСount) { // O(n^2)
