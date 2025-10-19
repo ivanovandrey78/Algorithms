@@ -1,31 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
 project(MyProject VERSION 1.0)
 
-# Установка стандарта C++
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Указание исходных файлов
-set(SOURCES
-    src/main.cpp
-    src/functions.cpp
-    src/sorts.cpp
-    src/pyramid.cpp
-)
+# Включаем поддиректории
+add_subdirectory(algorithms)
+add_subdirectory(structures)
 
-# Указание заголовочных файлов
-set(HEADERS
-    include/functions.h
-    include/sorts.h
-    include/pyramid.hpp
-)
+# Главный исполняемый файл
+add_executable(app main.cpp)
 
-# Создание исполняемого файла
-add_executable(app ${SOURCES} ${HEADERS})
+# Линкуем с нашими библиотеками
+target_link_libraries(app PRIVATE algorithms_lib structures_lib)
 
-# Включение директории с заголовками
-target_include_directories(app PRIVATE include)
-
-# Установка выходной директории (опционально)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
