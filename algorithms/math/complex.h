@@ -12,12 +12,13 @@ private:
     
 public:
     // Construct. 
-    Complex();
+
+    // Default constructor - 0 + 0i 
+    Complex(); 
 
     Complex(double r);
-    Complex(double i);
 
-    Complex(double r, double i); // standart initialisation
+    Complex(double r = 0.0, double i = 0.0); // standart initialisation
 
     Complex(const Complex &other); // copy wth other number 
     
@@ -26,7 +27,7 @@ public:
     double getImag() const;
 
     // Edit-operators 
-    void setReal(double r);
+    void setReal(double r); 
     void setImag(double i);
     
     // Arithmetics functions.
