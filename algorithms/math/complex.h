@@ -12,17 +12,16 @@ private:
     
 public:
     // Construct. 
-    
     Complex();
 
     Complex(double r);
     Complex(double i);
 
-    Complex(double r, double i);
+    Complex(double r, double i); // standart initialisation
 
-    Complex(const Complex &other); // copy other number 
+    Complex(const Complex &other); // copy wth other number 
     
-    // Get-operators
+    // Get-operators.
     double getReal() const;
     double getImag() const;
 
@@ -30,23 +29,23 @@ public:
     void setReal(double r);
     void setImag(double i);
     
-    // Arithmetics functions 
+    // Arithmetics functions.
     Complex operator+(const Complex& other) const;
     Complex operator-(const Complex& other) const;
     Complex operator*(const Complex& other) const;
     Complex operator/(const Complex& other) const;
     
-    // Compare
+    // Compare.
     bool operator==(const Complex& other) const;
     bool operator!=(const Complex& other) const;
     
-    // Math functions
+    // Math functions.
     double magnitude() const;
     double phase() const;
     Complex conjugate() const; // Сопряженное 
     Complex reciprocal() const; //Обратное на русский...
     
-    // Utilits
+    // Utilits.
     std::string to_string() const;
     static Complex from_polar(double magnitude, double phase);
 };
