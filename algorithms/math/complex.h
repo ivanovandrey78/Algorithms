@@ -29,10 +29,10 @@ public:
     
     // Arithmetics functions.
     // Compound operators.
-    Complex operator+=(const Complex& other);
-    Complex operator-=(const Complex& other);
-    Complex operator*=(const Complex& other);
-    Complex operator/=(const Complex& other);
+    Complex& operator+=(const Complex& other);
+    Complex& operator-=(const Complex& other);
+    Complex& operator*=(const Complex& other);
+    Complex& operator/=(const Complex& other);
 
     //Unary operators
     Complex operator-() const;
