@@ -3,7 +3,7 @@
 
 #include <sstream>
 
-namespace mymath {
+namespace math {
 
 Complex::Complex(double real, double imag) : real(real), imag(imag) {}
 

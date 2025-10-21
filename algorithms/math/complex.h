@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace mymath {
+namespace math {
     
 class Complex {
 private:

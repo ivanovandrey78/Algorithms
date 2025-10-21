@@ -1,38 +1,38 @@
 #include "math_functions.h"
 
-namespace mymath {
+namespace math {
 
     constexpr double PI = 3.141592653589793238462643383279502884197169399375105820974944;
     constexpr double E = 2.718281828459045235360287471352662497757247093699959574966967;
     constexpr double LN2 = 0.693147180559945309417232121458176568075500134360255254120680;
 
     double sqrt(double n,int maxIterations) {
-    if (n < 0) { std::cerr << "Number must be positive" << '\n'; return 1; }
-    if (n == 1) return 1.0;
-    if (n == 0) return 0.0;
-    
-    if (maxIterations <= 0) {
-        int d = 1;
-        while (d*d <= n) {
-            if (d * d == n) return static_cast<double>(d);
-            d++;
+        if (n < 0) { std::cerr << "Number must be positive" << '\n'; return 1; }
+        if (n == 1) return 1.0;
+        if (n == 0) return 0.0;
+        
+        if (maxIterations <= 0) {
+            int d = 1;
+            while (d*d <= n) {
+                if (d * d == n) return static_cast<double>(d);
+                d++;
+            }
+            d--;
+            double derivative = 1.0/(2.0*d);
+            return d + (n - d*d)*derivative;
         }
-        d--;
-        double derivative = 1.0/(2.0*d);
-        return d + (n - d*d)*derivative;
-    }
 
-    double currentApprox = sqrt(n, maxIterations-1);
-    
-    double derivative = 1.0/(2.0*currentApprox);
-    double result = currentApprox + (n - currentApprox*currentApprox)*derivative;
-    
-    return result;
+        double currentApprox = sqrt(n, maxIterations-1);
+        
+        double derivative = 1.0/(2.0*currentApprox);
+        double result = currentApprox + (n - currentApprox*currentApprox)*derivative;
+        
+        return result;
     }
 
     int min(int a,int b) {
-    if(a<=b) return a;
-    return b;
+        if(a <= b) return a;
+        return b;
     }
 
     int max(int a,int b) { 
@@ -96,4 +96,15 @@ namespace mymath {
         }
         return flag;
     }
+
+    int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+
 }
