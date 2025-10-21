@@ -5,38 +5,30 @@
 
 namespace math {
 
-Complex::Complex(double real, double imag) : real(real), imag(imag) {}
+// Construct.
+// Default. 
+Complex::Complex() : real(0.0), imag(0.0) {}
 
-Complex Complex::operator+(const Complex& other) const {
-    return Complex(real + other.real, imag + other.imag);
-}
+// With real value.
+Complex::Complex(double r) : real(r), imag(0.0) {}
 
-Complex Complex::operator*(const Complex& other) const {
-    return Complex(
-        real * other.real - imag * other.imag,
-        real * other.real + imag * other.imag
-    );
-}
+// With real and imaginary value.
+Complex::Complex(double r, double i) : real(r), imag(i) {}
 
-Complex Complex::operator/(const Complex& other) const {
-    double denominator = other.real * other.real + other.imag * other.imag;
-    if (denominator == 0) {
-        throw std::runtime_error("Division by zero");
-    }
-    return Complex(
-        (real * other.real + imag * other.imag) / denominator,
-        (imag * other.real - real * other.imag) / denominator
-    );
-}
+// Getters.
+double Complex::getReal() const { return real; }
+double Complex::getImag() const { return imag; }
 
-double Complex::magnitude() const {
-    return sqrt(real * real + imag * imag);
-}
+// Setters. 
+void Complex::setReal(double r) { real = r; }
+void Complex::setImag(double i) { imag = i; }
 
-std::string Complex::to_string() const {
-    std::ostringstream oss;
-    oss << real << (imag >= 0 ? " + " : " - ") << std::abs(imag) << "i";
-    return oss.str();
+// Arithmetics functions.
+// Compound operators.
+Complex& Complex::operator+=(const Complex& other) {
+    real += other.real;
+    imag += other.imag;
+    return *this;
 }
 
 } // namespace mymath
