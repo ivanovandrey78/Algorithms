@@ -25,7 +25,7 @@ Complex& Complex::operator-=(const Complex& other) {
 
 Complex& Complex::operator*=(const Complex& other) {
     double new_real = real * other.real - imag * other.imag;
-    double new_imag = real * other.imag + imag * other.real;  // Используем старый real!
+    double new_imag = real * other.imag + imag * other.real;
     real = new_real;
     imag = new_imag;
     return *this;
@@ -80,8 +80,6 @@ bool Complex::operator==(const Complex& other) const {
 bool Complex::operator!=(const Complex& other) const {
     return *this == other;
 }
-
-
 
 
 } // namespace math
