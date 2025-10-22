@@ -6,22 +6,8 @@
 namespace math {
 
 // Construct.
-// Default. 
-Complex::Complex() : real(0.0), imag(0.0) {}
-
-// With real value.
-Complex::Complex(double r) : real(r), imag(0.0) {}
-
 // With real and imaginary value.
 Complex::Complex(double r, double i) : real(r), imag(i) {}
-
-// Getters.
-double Complex::getReal() const { return real; }
-double Complex::getImag() const { return imag; }
-
-// Setters. 
-void Complex::setReal(double r) { real = r; }
-void Complex::setImag(double i) { imag = i; }
 
 // Arithmetics functions.
 // Compound operators.
@@ -30,5 +16,72 @@ Complex& Complex::operator+=(const Complex& other) {
     imag += other.imag;
     return *this;
 }
+
+Complex& Complex::operator-=(const Complex& other) {
+    real -= other.real;
+    imag -= other.imag;
+    return *this;
+}
+
+Complex& Complex::operator*=(const Complex& other) {
+    double new_real = real * other.real - imag * other.imag;
+    double new_imag = real * other.imag + imag * other.real;  // Используем старый real!
+    real = new_real;
+    imag = new_imag;
+    return *this;
+}
+
+Complex& Complex::operator/=(const Complex& other) {
+    double denominator = other.real * other.real + other.imag * other.imag;
+    if (denominator == 0) throw std::runtime_error("Complex division by zero");
+    
+    double new_real = (real * other.real + imag * other.imag) / denominator;
+    double new_imag = (imag * other.real - real * other.imag) / denominator; 
+    real = new_real;
+    imag = new_imag;
+    return *this;
+}
+
+//Unary operators.
+Complex Complex::operator-() const {
+    return Complex(-real,-imag);
+}
+
+//Binary operators.
+Complex operator+(const Complex& lhs,const Complex& rhs) {
+    Complex result = lhs;
+    result += rhs;
+    return result;
+}
+
+Complex operator-(const Complex& lhs,const Complex& rhs) {
+    Complex result = lhs;
+    result -= rhs;
+    return result;
+}
+
+Complex operator*(const Complex& lhs,const Complex& rhs) {
+    Complex result = lhs;
+    result *= rhs;
+    return result;
+}
+
+Complex operator/(const Complex& lhs,const Complex& rhs) {
+    Complex result = lhs;
+    result /= rhs;
+    return result;
+}
+
+// Compare operations.
+bool Complex::operator==(const Complex& other) const {
+    return real == other.real && imag == other.imag;
+}
+
+bool Complex::operator!=(const Complex& other) const {
+    return *this == other;
+}
+
+
+
 
 } // namespace math
