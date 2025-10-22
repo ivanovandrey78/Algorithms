@@ -13,19 +13,17 @@ private:
     
 public:
     // Construct. 
-    // Default constructor - 0 + 0i 
-    Complex();                               // 0 + 0i
-    Complex(double r);                       // r + 0i  
-    Complex(double r, double i);             // r + i
+    // Default constructor - 0 + 0i
+    Complex(double r = 0.0, double i = 0.0) : real(r), imag(i) {}
     Complex(const Complex &other) = default; // Copy from other number 
     
     // Getters.
-    double getReal() const;
-    double getImag() const;
+    double getReal() const { return real; }
+    double getImag() const { return imag; }
 
-    // Setters.
-    void setReal(double r); 
-    void setImag(double i);
+    // Setters. 
+    void setReal(double r) { real = r; }
+    void setImag(double i) { imag = i; }
     
     // Arithmetics functions.
     // Compound operators.
@@ -34,11 +32,10 @@ public:
     Complex& operator*=(const Complex& other);
     Complex& operator/=(const Complex& other);
 
-    //Unary operators
+    //Unary operators.
     Complex operator-() const;
-    Complex operator+() const;
 
-    //Binary operators
+    //Binary operators.
     friend Complex operator+(const Complex& lhs,const Complex& rhs);
     friend Complex operator-(const Complex& lhs,const Complex& rhs);
     friend Complex operator*(const Complex& lhs,const Complex& rhs);
@@ -54,7 +51,7 @@ public:
     Complex conjugate() const; // Сопряженное 
     Complex reciprocal() const; 
 
-    // Stream Complex number
+    // Stream Complex number.
     friend std::ostream& operator<<(std::ostream& os, const Complex& c);
     friend std::istream& operator>>(std::istream& is, Complex& c);
     

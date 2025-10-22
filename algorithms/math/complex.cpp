@@ -31,4 +31,4 @@ Complex& Complex::operator+=(const Complex& other) {
     return *this;
 }
 
-} // namespace mymath
+} // namespace math
