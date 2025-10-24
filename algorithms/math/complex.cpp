@@ -5,10 +5,6 @@
 
 namespace math {
 
-// Construct.
-// With real and imaginary value.
-Complex::Complex(double r, double i) : real(r), imag(i) {}
-
 // Arithmetics functions.
 // Compound operators.
 Complex& Complex::operator+=(const Complex& other) {
@@ -80,6 +76,16 @@ bool Complex::operator==(const Complex& other) const {
 bool Complex::operator!=(const Complex& other) const {
     return *this == other;
 }
+
+// Math functions.
+double Complex::magnitude() const {
+    return sqrt(real * real + imag * imag);
+}
+
+double Complex::phase() const {
+    return arctan2(imag,real);
+}
+
 
 
 } // namespace math
