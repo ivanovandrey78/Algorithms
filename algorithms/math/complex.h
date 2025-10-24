@@ -54,10 +54,15 @@ public:
     // Stream Complex number.
     friend std::ostream& operator<<(std::ostream& os, const Complex& c);
     friend std::istream& operator>>(std::istream& is, Complex& c);
+    std::string trigonometric_form(const Complex& number);
     
     // Utilits.
     std::string to_string() const;
     static Complex from_polar(double magnitude, double phase);
+
+    // Other functions.
+    bool is_zero() const;
+    
 }; 
 
 } // namespace math
