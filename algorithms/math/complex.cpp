@@ -74,7 +74,7 @@ bool Complex::operator==(const Complex& other) const {
 }
 
 bool Complex::operator!=(const Complex& other) const {
-    return *this == other;
+    return !(*this == other);
 }
 
 // Math functions.
@@ -86,6 +86,21 @@ double Complex::phase() const {
     return arctan2(imag,real);
 }
 
+Complex Complex::conjugate() const {
+    return(real, -imag);
+}
 
+Complex Complex::reciprocal() const {
+    if (is_zero()) {
+        throw std::runtime_error("Reciprocal of null"); 
+    } 
+    double denominator = real * real + imag * imag;
+    return Complex(real / denominator,-imag / denominator);
+}
+
+// Other functions. 
+bool Complex::is_zero() const {
+    return (real == 0.0 && imag == 0.0) ? true : false;
+}
 
 } // namespace math
