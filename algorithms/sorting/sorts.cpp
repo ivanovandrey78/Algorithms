@@ -1,5 +1,5 @@
 #include "sorts.h"
-#include "../structures/heap/pyramid.h"
+#include "../structures/heap/heap.h"
 
 void insertSort(int* array, int n, int& comparisonСount) { // O(n^2)
     if (n == 0) { 
