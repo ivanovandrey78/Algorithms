@@ -44,8 +44,8 @@ void selectionSort(int* a, int n) { // O(n^2)
     }
 }
 
-void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // simple merge with c-style
-    int i=0,j=0;
+void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // O(logn)
+    int i = 0,j = 0;
     int indexNow = 0;
     
     while (i < sizeA && j < sizeB) {
@@ -180,6 +180,6 @@ void quickSort(int* a, int start, int end,PartitionType partType) { // O(nlogn) 
 }
 
 bool isSorted(int* arr,int n) {
-    for (int i = 0;i < n-1;i++) if (arr[i] > arr[i+1]) return false;
+    for (int i = 0;i < n - 1;i++) if (arr[i] > arr[i + 1]) return false;
     return true;
 }

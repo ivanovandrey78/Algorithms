@@ -19,7 +19,7 @@ void mergeSort(int* a,size_t sizeA);
 int PartitionLomuto(int* a, int start, int end);
 int PartitionHoare(int* arr, int low, int high);
 int partition(int* arr, int low, int high);
-void quickSort(int* a, int start, int end,PartitionType partType);
+void quickSort(int* a, int start, int end,PartitionType partType = PartitionType::kPartitionRandom);
 
 // heap 
 void heapSort(int* arr, int n);
