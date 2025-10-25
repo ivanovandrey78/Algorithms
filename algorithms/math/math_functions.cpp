@@ -18,7 +18,7 @@ std::string angle_string(double angle_rad, double tolerance) {
     if (is_close(normalized, PI) || is_close(normalized, -PI)) 
         return (normalized < 0) ? "-pi" : "pi";
     if (is_close(normalized, PI/2) || is_close(normalized, -PI/2))
-        return (normalized < 0) ? "-pi/2" : "pi/2";~
+        return (normalized < 0) ? "-pi/2" : "pi/2";
 
 
     const int max_den = 12;
@@ -57,7 +57,7 @@ std::string angle_string(double angle_rad, double tolerance) {
         return oss.str();
     }
 
-    // Если не попадает ни в одну "рациональную" долю π — вывести число в радианах
+    // Out in rad if string hasn't pi/n 
     std::ostringstream stream;
     stream.precision(6);
     stream << std::fixed << angle_rad << " rad";
@@ -102,12 +102,33 @@ for (int i = 0;i < rec;i++) {prod *= n;}
 return prod;
 }
 
+// Rounding.
 double round(double x) {
     if (x >= 0.0) {
         return static_cast<long long>(x + 0.5);
     } else {
         return static_cast<long long>(x - 0.5);
     }
+}
+
+double floor(double x) {
+    double result = static_cast<long long>(x);
+    if (x < 0.0 && x != result) {
+        result -= 1.0;
+    }
+    return result;
+}
+
+double ceil(double x) {
+    double result = static_cast<long long>(x);
+    if (x > 0.0 && x != result) {
+        result += 1.0;
+    }
+    return result;
+}
+
+double trunc(double x) {
+    return static_cast<long long>(x);
 }
 
 unsigned long factorial(unsigned int n) {
