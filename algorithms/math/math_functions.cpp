@@ -1,6 +1,5 @@
 #include "math_functions.h"
 #include <sstream> 
-#include <cmath>
 
 namespace math {
 
