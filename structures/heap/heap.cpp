@@ -129,8 +129,36 @@ void heapSort(int* arr, int size) {
     heapSort(arr, size, type);
 }
 
-// PRIORITY QUEUE IMPLEMENTATION 
+// KATALAN NUMBER. (Heap to Brackets)
+std::string heapToBracketSequence(int* heap, int size, int index = 0) {
+    if (index >= size) {
+        return "()";  
+    }
+    int left_child = 2 * index + 1;
+    int right_child = 2 * index + 2;
+    
+    std::string left_str = heapToBracketSequence(heap, size, left_child);
+    std::string right_str = heapToBracketSequence(heap, size, right_child);
+    
+    return "(" + left_str + ")" + std::to_string(heap[index]) + "(" + right_str + ")";
+}
 
+// Alternative - without values
+std::string heapToPureBrackets(int* heap, int size, int index = 0) {
+    if (index >= size) {
+        return "()";
+    }
+    
+    int left_child = 2 * index + 1;
+    int right_child = 2 * index + 2;
+    
+    std::string left_str = heapToPureBrackets(heap, size, left_child);
+    std::string right_str = heapToPureBrackets(heap, size, right_child);
+    
+    return "(" + left_str + right_str + ")";
+}
+
+// PRIORITY QUEUE IMPLEMENTATION 
 PriorityQueue::PriorityQueue(HeapType type) 
     : capacity_(10), size_(0), type_(type) {
     data_ = new int[capacity_];
