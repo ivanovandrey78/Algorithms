@@ -3,7 +3,6 @@
 #include <stdexcept>
 
 // HEAP FUNCTIONS
-
 void SiftDown(int* arr, int size, int i, HeapType type) {
     while (2 * i + 1 < size) {
         int left = 2 * i + 1;
@@ -130,7 +129,7 @@ void heapSort(int* arr, int size) {
 }
 
 // KATALAN NUMBER. (Heap to Brackets)
-std::string heapToBracketSequence(int* heap, int size, int index = 0) {
+std::string heapToBracketSequence(int* heap, int size, int index) {
     if (index >= size) {
         return "()";  
     }
@@ -144,7 +143,7 @@ std::string heapToBracketSequence(int* heap, int size, int index = 0) {
 }
 
 // Alternative - without values
-std::string heapToPureBrackets(int* heap, int size, int index = 0) {
+std::string heapToPureBrackets(int* heap, int size, int index) {
     if (index >= size) {
         return "()";
     }
