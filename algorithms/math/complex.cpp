@@ -38,12 +38,12 @@ Complex& Complex::operator/=(const Complex& other) {
     return *this;
 }
 
-//Unary operators.
+// Unary operators.
 Complex Complex::operator-() const {
     return Complex(-real,-imag);
 }
 
-//Binary operators.
+// Binary operators.
 Complex operator+(const Complex& lhs,const Complex& rhs) {
     Complex result = lhs;
     result += rhs;
