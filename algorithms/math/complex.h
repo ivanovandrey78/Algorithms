@@ -62,7 +62,6 @@ public:
 
     // Other functions.
     bool is_zero() const;
-    
 }; 
 
 } // namespace math
