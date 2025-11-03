@@ -98,6 +98,11 @@ Complex Complex::reciprocal() const {
     return Complex(real / denominator,-imag / denominator);
 }
 
+// Stream Complex number.
+std::ostream& operator<<(std::ostream& os, const Complex& x) {
+    os << x.real << ' ' << x.imag; 
+}
+
 // Other functions. 
 bool Complex::is_zero() const {
     return (real == 0.0 && imag == 0.0) ? true : false;
