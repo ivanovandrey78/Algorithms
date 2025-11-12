@@ -23,10 +23,7 @@ void bubbleSort(int* arr, int asize) { // O(n^2)
     for (int i = 0; i < asize-1; i++) 
     {
         for (int j = 0; j < asize - i - 1 ; j++)
-            if (arr[j] > arr[j + 1]) 
-            {
-                std::swap(arr[j], arr[j + 1]);
-            }
+            if (arr[j] > arr[j + 1]) { std::swap(arr[j], arr[j + 1]); }
     }       
 }
 
@@ -45,7 +42,7 @@ void selectionSort(int* a, int n) { // O(n^2)
 }
 
 void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // O(logn)
-    int i = 0,j = 0;
+    int i = 0, j = 0;
     int indexNow = 0;
     
     while (i < sizeA && j < sizeB) {
@@ -74,28 +71,19 @@ void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // O(logn)
 
 void mergeSort(int* a,size_t sizeA) { // O(nlogn)
 
-    if (sizeA <= 1) 
-    {
-        return;
-    }
+    if (sizeA <= 1) { return; }
 
     size_t mid = sizeA/2;
     int* left = new int[mid];
-    int* right = new int[sizeA-mid];
+    int* right = new int[sizeA - mid];
 
-    for (size_t i=0;i<mid;i++) 
-    {
-        left[i] = a[i];
-    }
-    for (size_t i = mid;i<sizeA;i++) 
-    {
-        right[i-mid] = a[i];
-    }
+    for (size_t i = 0;i < mid; i++) { left[i] = a[i]; }
+    for (size_t i = mid;i < sizeA; i++) { right[i-mid] = a[i]; }
 
     mergeSort(left,mid);
     mergeSort(right,sizeA-mid);
 
-    merge(a,left,mid,right,sizeA-mid);
+    merge(a, left, mid, right, sizeA - mid);
 
     delete[] left;
     delete[] right;
@@ -120,17 +108,11 @@ int PartitionHoare(int* arr, int low, int high) { // O(n^2)
     int j = high + 1;
     
     while (true) {
-        do {
-            i++;
-        } while (arr[i] < pivot);
         
-        do {
-            j--;
-        } while (arr[j] > pivot);
+        do { i++; } while (arr[i] < pivot);
+        do { j--; } while (arr[j] > pivot);
         
-        if (i >= j) {
-            return j;
-        }
+        if (i >= j) { return j; }
         std::swap(arr[i], arr[j]);
     }
 }
