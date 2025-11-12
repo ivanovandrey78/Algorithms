@@ -140,24 +140,24 @@ void quickSort(int* a, int start, int end,PartitionType partType) { // O(nlogn) 
                 break;
             }
             case PartitionType::kPartitionHoare: {
-                pivot = PartitionHoare(a,start,end);
+                pivot = PartitionHoare(a, start, end);
                 break;
             }
             default: { // Partition Lomuto
-                pivot = PartitionLomuto(a,start,end);
+                pivot = PartitionLomuto(a, start, end);
                 break;
             }
         }
         if (pivot > 0 && partType != PartitionType::kPartitionHoare) {
-            quickSort(a, start, pivot-1,partType);
+            quickSort(a, start, pivot - 1,partType);
         } else {
-            quickSort(a, start, pivot,partType);
+            quickSort(a, start, pivot, partType);
         }
-        quickSort(a, pivot + 1, end,partType);
+        quickSort(a, pivot + 1, end, partType);
     }
 }
 
 bool isSorted(int* arr,int n) {
-    for (int i = 0;i < n - 1;i++) if (arr[i] > arr[i + 1]) return false;
+    for (int i = 0; i < n - 1; i++) if (arr[i] > arr[i + 1]) return false;
     return true;
 }
