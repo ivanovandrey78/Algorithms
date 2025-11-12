@@ -28,16 +28,12 @@ void bubbleSort(int* arr, int asize) { // O(n^2)
 }
 
 void selectionSort(int* a, int n) { // O(n^2)
-    for (int i = 0; i < n-1; i++) {
+    for (int i = 0; i < n - 1; i++) {
         int indexNow = i; 
-        for (int j = i+1; j < n; j++) {
-            if (a[j] < a[indexNow]) {
-                indexNow = j;
-            }
+        for (int j = i + 1; j < n; j++) {
+            if (a[j] < a[indexNow]) { indexNow = j; }
         }
-        if (indexNow != i) {
-            std::swap(a[i], a[indexNow]);
-        }
+        if (indexNow != i) { std::swap(a[i], a[indexNow]); }
     }
 }
 
@@ -69,7 +65,7 @@ void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // O(logn)
     }
 }
 
-void mergeSort(int* a,size_t sizeA) { // O(nlogn)
+void mergeSort(int* a,size_t sizeA) { // O(nlogn) 
 
     if (sizeA <= 1) { return; }
 
