@@ -1,29 +1,31 @@
 #include "sorts.h"
 
-void insertSort(int* array, int n, int& comparisonСount) { // O(n^2)
-    if (n == 0) { 
-        comparisonСount = 0;
-        return;
-    }
+void insertSort(int* array, int n, int& comparisonCount) { // O(n^2)
+    comparisonCount = 0;
     for (int i = 1; i < n; i++) {
         int key = array[i];
         int j = i - 1;
-        while (j >= 0) {
-            comparisonСount++; 
-            if (array[j] > key) {
-                array[j + 1] = array[j];
-                j--;
-            } else break;
+        
+        while (j >= 0 && array[j] > key) {
+            comparisonCount++;
+            array[j + 1] = array[j];
+            j--;
         }
+        if (j >= 0) comparisonCount++;
         array[j + 1] = key;
     }
 }
 
 void bubbleSort(int* arr, int asize) { // O(n^2)
-    for (int i = 0; i < asize-1; i++) 
-    {
-        for (int j = 0; j < asize - i - 1 ; j++)
-            if (arr[j] > arr[j + 1]) { std::swap(arr[j], arr[j + 1]); }
+    for (int i = 0; i < asize-1; i++) {
+        bool swapped = false;
+        for (int j = 0; j < asize - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) { 
+                std::swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) break; // already is sorted
     }       
 }
 
@@ -37,39 +39,27 @@ void selectionSort(int* a, int n) { // O(n^2)
     }
 }
 
-void merge(int* res,int*a,size_t sizeA,int*b,size_t sizeB) { // O(logn)
-    int i = 0, j = 0;
-    int indexNow = 0;
-    
+void merge(int* res, int* a, size_t sizeA, int* b, size_t sizeB) {
+    // merge
+    size_t i = 0, j = 0, k = 0;
     while (i < sizeA && j < sizeB) {
         if (a[i] <= b[j]) {
-            res[indexNow] = a[i];
-            i++;
-            indexNow++;
-        }
-        else {
-            res[indexNow] = b[j];
-            j++;
-            indexNow++;
+            res[k++] = a[i++];
+        } else {
+            res[k++] = b[j++];
         }
     }
-    while (i < sizeA) {
-        res[indexNow] = a[i];
-        indexNow++;
-        i++;
-    }
-    while (j < sizeB) {
-        res[indexNow] = b[j];
-        indexNow++;
-        j++;
-    }
+    // 1st array
+    while (i < sizeA) { res[k++] = a[i++]; }
+    // 2nd array
+    while (j < sizeB) { res[k++] = b[j++]; }
 }
 
-void mergeSort(int* a,size_t sizeA) { // O(nlogn) 
+void mergeSort(int* a,size_t sizeA) { // O(nlogn)
 
     if (sizeA <= 1) { return; }
 
-    size_t mid = sizeA/2;
+    size_t mid = sizeA / 2;
     int* left = new int[mid];
     int* right = new int[sizeA - mid];
 
@@ -130,30 +120,23 @@ int partition(int* arr, int low, int high) { // O(nlogn)
     return i + 1;
 }
 
-void quickSort(int* a, int start, int end,PartitionType partType) { // O(nlogn) or O(n^2)
+void quickSort(int* a, int start, int end, PartitionType partType) { // O(nlogn) or O(n^2)
     if (start < end) {
         int pivot;
-        switch (partType) 
-        {
-            case PartitionType::kPartitionRandom: {
-                pivot = partition(a, start, end);
-                break;
-            }
-            case PartitionType::kPartitionHoare: {
+        switch (partType) {
+            case PartitionType::kPartitionHoare:
                 pivot = PartitionHoare(a, start, end);
+                quickSort(a, start, pivot, partType);
+                quickSort(a, pivot + 1, end, partType);
                 break;
-            }
-            default: { // Partition Lomuto
-                pivot = PartitionLomuto(a, start, end);
+            default:
+                pivot = (partType == PartitionType::kPartitionRandom) 
+                       ? partition(a, start, end) 
+                       : PartitionLomuto(a, start, end);
+                quickSort(a, start, pivot - 1, partType);
+                quickSort(a, pivot + 1, end, partType);
                 break;
-            }
         }
-        if (pivot > 0 && partType != PartitionType::kPartitionHoare) {
-            quickSort(a, start, pivot - 1,partType);
-        } else {
-            quickSort(a, start, pivot, partType);
-        }
-        quickSort(a, pivot + 1, end, partType);
     }
 }
 

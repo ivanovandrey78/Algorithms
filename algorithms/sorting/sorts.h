@@ -1,5 +1,4 @@
 #pragma once
-#define SORT_H
 
 #include <iostream>
 
@@ -26,4 +25,4 @@ void heapSort(int* arr, int n);
 
 // helpers for sorts 
 bool isSorted(int* arr,int n);
-int* merge(int* a,int nA, int* b,int nB,int& n);
+void merge(int* result, int* a, size_t sizeA, int* b, size_t sizeB);
